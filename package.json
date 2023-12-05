@@ -1,0 +1,11 @@
+{
+	"name": "rollmaster",
+	"version": "0.0.1",
+	"description": "Jujitsu Knoweldge Application",
+	"main": "index.js",
+	"scripts": {
+		"serve:dev": "uvicorn server/main:app --reload"
+	},
+	"author": "",
+	"license": "ISC"
+}

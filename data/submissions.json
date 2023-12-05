@@ -1,0 +1,430 @@
+{
+	"submissions": [
+		{
+			"name": "Guillotine",
+			"type": [],
+			"alias": "Mae Hadaka Jime",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": [""]
+		},
+		{
+			"name": "Rear Nake Choke",
+			"type": [],
+			"alias": "Hadaka Jime",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Triangle choke",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Bow and arrow choke",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Ezekiel choke",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Cross collar choke",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Baseball bat choke",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "D’Arce choke",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Clock choke",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Arm triangle",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "North-South choke",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Crucifix choke",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Thrust choke",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Anaconda choke",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Peruvian necktie",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Japanese necktie",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Loop choke",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Step over choke",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Paper cutter choke",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Gogoplata",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Brabo choke",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Lapel half nelson",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Von Flue choke",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Bulldog choke",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Buggy choke",
+			"type": [],
+			"alias": "",
+			"family": "Choke",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Monoplata",
+			"type": [],
+			"alias": "",
+			"family": "Arm / Shoulder Lock",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Americana",
+			"type": [],
+			"alias": "",
+			"family": "Arm / Shoulder Lock",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Kimura",
+			"type": [],
+			"alias": "",
+			"family": "Arm / Shoulder Lock",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Armbar",
+			"type": [],
+			"alias": "",
+			"family": "Arm / Shoulder Lock",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Cutting arm bar",
+			"type": [],
+			"alias": "",
+			"family": "Arm / Shoulder Lock",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Bicep slicer",
+			"type": [],
+			"alias": "",
+			"family": "Arm / Shoulder Lock",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Omoplata",
+			"type": [],
+			"alias": "",
+			"family": "Arm / Shoulder Lock",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Wristlock",
+			"type": [],
+			"alias": "",
+			"family": "Arm / Shoulder Lock",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Mir lock",
+			"type": [],
+			"alias": "",
+			"family": "Arm / Shoulder Lock",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Hammerlock",
+			"type": [],
+			"alias": "",
+			"family": "Arm / Shoulder Lock",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Scorpion Lock",
+			"type": [],
+			"alias": "",
+			"family": "Arm / Shoulder Lock",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Banana split hip lock",
+			"type": [],
+			"alias": "",
+			"family": "Hip Lock",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Electric chair",
+			"type": [],
+			"alias": "",
+			"family": "Hip Lock",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Straight Ankle Lock",
+			"type": [],
+			"alias": "",
+			"family": "Foot / Leg Locks",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Kneebar",
+			"type": [],
+			"alias": "",
+			"family": "Foot / Leg Locks",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Calf slicer",
+			"type": [],
+			"alias": "",
+			"family": "Foot / Leg Locks",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Toehold",
+			"type": [],
+			"alias": "",
+			"family": "Foot / Leg Locks",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Heel hook",
+			"type": [],
+			"alias": "",
+			"family": "Foot / Leg Locks",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Aoki Lock",
+			"type": [],
+			"alias": "",
+			"family": "Foot / Leg Locks",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Ham sandwich",
+			"type": [],
+			"alias": "",
+			"family": "Foot / Leg Locks",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Can opener",
+			"type": [],
+			"alias": "",
+			"family": "Crank",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		},
+		{
+			"name": "Twister",
+			"type": [],
+			"alias": "",
+			"family": "Crank",
+			"description": "",
+			"img_ref": "",
+			"positions": []
+		}
+	],
+	"positions": [],
+	"takedowns": [],
+	"throws": []
+}
