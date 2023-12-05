@@ -4,7 +4,7 @@
 	"description": "Jujitsu Knoweldge Application",
 	"main": "index.js",
 	"scripts": {
-		"serve:dev": "uvicorn server/main:app --reload"
+		"serve:dev": "python backend/main.py"
 	},
 	"author": "",
 	"license": "ISC"
