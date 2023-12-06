@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { VideoCameraIcon } from "@heroicons/react/20/solid";
+import axios from "axios";
 
 function VideoForm() {
 	let [inputValue, setInputValue] = useState("");
 
-	let handleSubmit = (e) => {
+	let handleSubmit = async (e) => {
 		e.preventDefault();
 		console.log(inputValue);
 		setInputValue("");
+		let res = await axios.get("http://localhost:8000/api/transcribe");
+		// let res = await axios.get("/api/transcribe");
+		console.log(res);
 	};
 
 	return (
