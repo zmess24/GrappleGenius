@@ -2,9 +2,9 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
+from openai_api import whisper
 
 templates = Jinja2Templates(directory='homepage-app')
-
 
 # Initialize FastAPI Instances
 app = FastAPI(title="frontend-app")
@@ -30,8 +30,9 @@ app.add_middleware(
 )
 
 # Define API Routes
-@api_app.get("/transcribe")
-async def transcribe_video():
-    print("Hello World")
-    return {"message": "Hello World"}
+@api_app.get("/predict")
+async def predict():
+    whisper.download_video()
+    result = whisper.transcribe_video()
+    return {"message": result }
 

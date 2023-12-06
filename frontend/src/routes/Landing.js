@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import VideoForm from "../components/VideoForm";
 
 function Home() {
+	const [content, setContent] = useState("");
 	return (
 		<div className="relative isolate px-6 lg:px-8">
 			<div className="mx-auto max-w-2xl sm:pt-48 lg:pt-40">
@@ -12,7 +13,8 @@ function Home() {
 						step-by-step breakdowns to enhance understanding and learning. Built on OpenAI technology.
 					</p>
 				</div>
-				<VideoForm />
+				<VideoForm updateContent={setContent} />
+				<p>{content}</p>
 			</div>
 		</div>
 	);
