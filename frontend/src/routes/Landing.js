@@ -3,6 +3,13 @@ import VideoForm from "../components/VideoForm";
 
 function Home() {
 	const [content, setContent] = useState("");
+
+	let handleResponse = (response) => {
+		let parsedResponse = response.replaceAll(/\n/g, "");
+		setContent(parsedResponse);
+		// document.querySelector("#response").innerHTML = parsedResponse;
+	};
+
 	return (
 		<div className="relative isolate px-6 lg:px-8">
 			<div className="mx-auto max-w-2xl sm:pt-48 lg:pt-40">
@@ -13,8 +20,11 @@ function Home() {
 						step-by-step breakdowns to enhance understanding and learning. Built on OpenAI technology.
 					</p>
 				</div>
-				<VideoForm updateContent={setContent} />
-				<p>{content}</p>
+				<VideoForm updateContent={handleResponse} />
+				<section
+					className={content !== "" ? `transition-opacity ease-in duration-700 opacity-100` : ""}
+					dangerouslySetInnerHTML={{ __html: content }}
+				></section>
 			</div>
 		</div>
 	);

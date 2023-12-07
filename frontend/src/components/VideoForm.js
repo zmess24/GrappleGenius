@@ -12,11 +12,6 @@ function VideoForm({ updateContent }) {
 
 	let validateInput = (url) => {
 		var re = new RegExp(/youtube.com\/watch\?v=(.*)/);
-		setError({
-			status: true,
-			message: "Oops! Entered URL is not valid.",
-		});
-
 		return !re.test(url);
 	};
 
@@ -26,15 +21,31 @@ function VideoForm({ updateContent }) {
 		if (!error) {
 			try {
 				setDisabledStatus(true);
-				let res = await axios.get("http://localhost:8000/api/predict");
+				let res = await axios.post("http://localhost:8000/api/predict", { url: inputValue });
 				// let res = await axios.get("/api/transcribe");
-				debugger;
-				updateContent(res.data.message);
-				setInputValue("");
+				if (res.data.error) {
+					setError({
+						status: true,
+						message: res.data.error,
+					});
+				} else {
+					updateContent(res.data.summary);
+					setInputValue("");
+					setError({
+						status: false,
+						message: "",
+					});
+				}
 			} catch (err) {
 				console.log(err.message);
 			}
+
 			setDisabledStatus(false);
+		} else {
+			setError({
+				status: true,
+				message: "Oops! Entered URL is not valid.",
+			});
 		}
 	};
 
