@@ -19,7 +19,6 @@ app.mount("/", StaticFiles(directory="public", html=True), name="public")
 # Add Middlewares
 cors.enable_cors(app)
 
-
 class YouTubeLink(BaseModel):
     url: str
 
@@ -29,9 +28,9 @@ async def predict(link: YouTubeLink):
     # Download Video from 'pytube' and analyze title category
     result = whisper.download_video(link)
     # If title is related to BJJ, Transcribe video. 
-    if result["sentiment"] == True:
-        summary = whisper.transcribe_video(result)
-        return {"summary": summary }
+    if result["sentiment"] == "True":
+        summary = whisper.transcribe_video()
+        return { "title": result["title"], "summary": summary }
     else: 
         error_message = f"Sorry, {result['title']} doesn't appear to be a BJJ instructional video."
         return {"error": error_message }

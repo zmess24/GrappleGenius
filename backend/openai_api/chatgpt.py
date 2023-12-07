@@ -14,8 +14,7 @@ client = OpenAI(api_key=API_KEY[0])
 # Create Sentiment Analysis Bot
 def analyze_video_title(title):
     # System Description
-    system_description = "You are help sentiment analysis assistant whose sole purpose is to determine if the text I provide has to do with Brazilian Ju-Jitsu. I only want you to give True or False answers"
-
+    system_description = "You are help sentiment analysis assistant whose sole purpose is to determine if the text I provide has to do with Brazilian Ju-Jitsu. I only want you to give True or False answers with no additional information."
     # Generate Response
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
@@ -34,10 +33,11 @@ def analyze_video_title(title):
 def summarize_transcript(transcript):
     # System Description
     system_description = '''
-    You are BJJ transcript summarizer assistant. Any transcript from a BJJ YouTube you are given, you will respond by:
-        - Provide a brief overview of the technique.
-        - Breakdown the technique into step by step instructions on how to execute the technique.
-        - Please return your response in HTML format.
+    You are a BJJ transcript summarizer assistant. Any transcript from a BJJ YouTube you are given, you will respond by:
+        - Overview: Provide a brief overview section of the techniques or concepts discussed in the transcript.
+        - Techniques: Breakdown each technique or concept into step by step instructions on how to execute it.
+        - Conclusion: Please include a brief conclusion highlighting what was discussed.
+        - Please returns this data in JSON using the following format: { overview: "", techniques: [{ techniqueName: "", steps: [] }, { techniqueName: "", steps: [] }], conclusion: ""}
     '''
 
     # Generate Response
