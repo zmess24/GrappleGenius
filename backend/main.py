@@ -30,7 +30,7 @@ async def predict(link: YouTubeLink):
     # If title is related to BJJ, Transcribe video. 
     if result["sentiment"] == "True":
         summary = whisper.transcribe_video()
-        return { "title": result["title"], "summary": summary }
+        return { "title": result["title"], "summary": summary, "id": result["video_id"] }
     else: 
         error_message = f"Sorry, {result['title']} doesn't appear to be a BJJ instructional video."
         return {"error": error_message }
