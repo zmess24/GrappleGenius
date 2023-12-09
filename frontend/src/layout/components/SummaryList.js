@@ -4,11 +4,12 @@ import { InformationCircleIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { clearCache } from "../../cache";
 
 function SummaryList({ summaries, updateStore }) {
-	let activeLink = "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold bg-gray-800 text-white";
-	let inActiveLink = "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-gray-400 hover:text-white hover:bg-gray-800";
+	let activeLink = "whitespace-nowrap group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold bg-gray-800 text-white";
+	let inActiveLink =
+		"whitespace-nowrap group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-gray-400 hover:text-white hover:bg-gray-800";
 
 	let renderSummaryItem = (summary) => {
-		let length = 35;
+		let length = 33;
 		let title = summary.title;
 		title = title.length > length ? title.substring(0, length - 3) + "..." : title;
 

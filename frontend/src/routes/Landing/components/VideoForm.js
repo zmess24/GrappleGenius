@@ -15,9 +15,25 @@ function VideoForm() {
 	const { summaries, setSummaries } = useOutletContext();
 
 	let validateInput = (url) => {
+		// Check if entered URL format is a valid YouTube Link.
 		let pattern = /youtube.com\/watch\?v=(.*)/;
 		var re = new RegExp(pattern);
-		return !re.test(url);
+
+		if (!re.test(url)) {
+			setError({ showError: true, message: `Oops! "${url}" is not a valid YouTube URL.` });
+			return true;
+		}
+
+		// Check if entered YouTube link has already been summarized.
+		let videoId = url.split("v=")[1].split("&")[0];
+		let videoFound = summaries.find((s) => s.id === videoId);
+
+		if (videoFound) {
+			setError({ showError: true, message: `Oops! "${url}" has already been transcribed.` });
+			return true;
+		}
+
+		return false;
 	};
 
 	let valdiateOutput = (data) => {
@@ -27,14 +43,12 @@ function VideoForm() {
 	let updateContextAndCache = async (data) => {
 		let timestamp = new Date().getTime();
 		let newSummary = { ...data, timestamp };
-		debugger;
 		let newSummariesList = [...summaries, newSummary];
 		setSummaries(newSummariesList);
 		await saveCache(newSummariesList);
 		console.log(`Saving video ${newSummary.id} saved to cache and state.`);
 	};
 
-	console.log(summaries);
 	let handleSubmit = async (e) => {
 		e.preventDefault();
 		let error = validateInput(inputValue);
@@ -57,8 +71,6 @@ function VideoForm() {
 			} catch (err) {
 				console.log(err.message);
 			}
-		} else {
-			setError({ showError: true, message: `Oops! "${inputValue}" is not a valid YouTube URL.` });
 		}
 	};
 
