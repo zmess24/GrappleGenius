@@ -4,6 +4,7 @@ import { Transition } from "@headlessui/react";
 
 function Summary({ data }) {
 	const { state } = useLocation();
+	debugger;
 	// Load summary depending on if loaded from server or localForge.
 	let title = state.data ? state.data.title : data.title;
 	let summary = state.data ? JSON.parse(state.data.summary) : JSON.parse(data.summary);

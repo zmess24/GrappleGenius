@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function SummaryList({ summaries }) {
 	let classNames = (...classes) => {
@@ -8,15 +9,16 @@ function SummaryList({ summaries }) {
 	let renderSummaryItem = (summary) => {
 		return (
 			<li key={summary.id}>
-				<a
-					href={summary.id}
+				<NavLink
+					to={`/summary/${summary.id}`}
+					state={{ data: summary }}
 					className={classNames(
 						summary.current ? "bg-gray-800 text-white" : "text-gray-400 hover:text-white hover:bg-gray-800",
 						"group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
 					)}
 				>
 					{summary.title}
-				</a>
+				</NavLink>
 			</li>
 		);
 	};
