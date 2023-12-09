@@ -1,15 +1,13 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useLoaderData } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 
-function Summary({ data }) {
-	const { state } = useLocation();
-	debugger;
-	// Load summary depending on if loaded from server or localForge.
-	let title = state.data ? state.data.title : data.title;
-	let summary = state.data ? JSON.parse(state.data.summary) : JSON.parse(data.summary);
-	// if (!summary) return <></>;
-	debugger;
+function Summary() {
+	let data = useLoaderData(); // If page is hit directly.
+	const { state } = useLocation(); // If page is hit dynamically.
+
+	let title = state ? state.data.title : data.title;
+	let summary = state ? JSON.parse(state.data.summary) : JSON.parse(data.summary);
 	return (
 		<Transition
 			appear={true}
@@ -35,7 +33,7 @@ function Summary({ data }) {
 						<ol>
 							{technique.steps.map((step, j) => {
 								return (
-									<li>
+									<li key={i}>
 										{j + 1}: {step}
 									</li>
 								);

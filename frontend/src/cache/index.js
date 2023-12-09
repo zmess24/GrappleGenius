@@ -7,7 +7,6 @@ export async function loadCache() {
 	let data = await localforage.getItem(CACHE_KEY);
 	// If first time page load or user clears cache, init cache.
 	if (!data) {
-		debugger;
 		console.log("Initializing Cache");
 		data = [];
 		await localforage.setItem(CACHE_KEY, JSON.stringify([]));
@@ -19,4 +18,8 @@ export async function loadCache() {
 export async function saveCache(summaries) {
 	console.log(`Saving cache.`);
 	await localforage.setItem(CACHE_KEY, JSON.stringify(summaries));
+}
+
+export async function clearCache() {
+	await localforage.setItem(CACHE_KEY, JSON.stringify([]));
 }

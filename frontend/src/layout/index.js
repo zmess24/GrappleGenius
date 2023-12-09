@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect, useContext } from "react";
+import { Fragment, useState, useEffect } from "react";
 import SummaryList from "./components/SummaryList";
 import { Dialog, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -7,20 +7,18 @@ import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { loadCache } from "../cache";
 
-const summaries = [
-	{ id: "b8b9tR21K8Q", title: "BJJ No-Gi Kimura Attack Sequence from Full Guard", summary: {}, current: true },
-	{ id: "b8b9tR21K8Q", title: "BJJ No-Gi Kimura Attack Sequence from Full Guard", summary: {}, current: false },
-	{ id: "b8b9tR21K8Q", title: "BJJ No-Gi Kimura Attack Sequence from Full Guard", summary: {}, current: false },
-];
-
 export default function NavLayout() {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
 	const [summaries, setSummaries] = useState([]);
 
-	useEffect(async () => {
-		let data = await loadCache();
-		setSummaries(data);
+	useEffect(() => {
+		async function fetchData() {
+			let data = await loadCache();
+			setSummaries(data);
+		}
+		fetchData();
 	}, []);
+
 	return (
 		<>
 			<div>
@@ -74,7 +72,7 @@ export default function NavLayout() {
 												alt="Your Company"
 											/>
 										</div>
-										<SummaryList summaries={summaries} />
+										<SummaryList summaries={summaries} updateStore={setSummaries} />
 									</div>
 								</Dialog.Panel>
 							</Transition.Child>
@@ -93,7 +91,7 @@ export default function NavLayout() {
 								<PencilSquareIcon className="h-6 w-6 cursor-pointer text-gray-400 hover:text-white" aria-hidden="true" />
 							</Link>
 						</div>
-						<SummaryList summaries={summaries} />
+						<SummaryList summaries={summaries} updateStore={setSummaries} />
 					</div>
 				</div>
 
