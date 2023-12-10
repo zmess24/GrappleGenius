@@ -18,7 +18,6 @@ function VideoForm() {
 		// Check if entered URL format is a valid YouTube Link.
 		let pattern = /youtube.com\/watch\?v=(.*)/;
 		var re = new RegExp(pattern);
-
 		if (!re.test(url)) {
 			setError({ showError: true, message: `Oops! "${url}" is not a valid YouTube URL.` });
 			return true;
@@ -42,7 +41,7 @@ function VideoForm() {
 
 	let updateContextAndCache = async (data) => {
 		let timestamp = new Date().getTime();
-		let newSummary = { ...data, timestamp };
+		let newSummary = { ...data, timestamp, link: inputValue };
 		let newSummariesList = [...summaries, newSummary];
 		setSummaries(newSummariesList);
 		await saveCache(newSummariesList);

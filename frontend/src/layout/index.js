@@ -65,12 +65,14 @@ export default function NavLayout() {
 									</Transition.Child>
 									{/* Sidebar component, swap this element with another sidebar if you like */}
 									<div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4 ring-1 ring-white/10">
-										<div className="flex h-16 shrink-0 items-center">
-											<img
-												className="h-8 w-auto"
-												src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-												alt="Your Company"
-											/>
+										<div className="flex flex-row justify-between h-16 shrink-0 items-center">
+											<h4 className="text-white text-lg leading-6 font-semibold italic">GrappleGenius</h4>
+											<Link to="/">
+												<PencilSquareIcon
+													className="h-6 w-6 cursor-pointer text-gray-400 hover:text-white"
+													aria-hidden="true"
+												/>
+											</Link>
 										</div>
 										<SummaryList summaries={summaries} updateStore={setSummaries} />
 									</div>
@@ -86,7 +88,7 @@ export default function NavLayout() {
 
 					<div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4">
 						<div className="flex flex-row justify-between h-16 shrink-0 items-center">
-							<img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
+							<h4 className="text-white text-lg leading-6 font-semibold italic">GrappleGenius</h4>
 							<Link to="/">
 								<PencilSquareIcon className="h-6 w-6 cursor-pointer text-gray-400 hover:text-white" aria-hidden="true" />
 							</Link>

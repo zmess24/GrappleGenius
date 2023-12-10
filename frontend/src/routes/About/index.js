@@ -77,14 +77,17 @@ function About() {
 					</ol>
 
 					<h4 className="text-lg font-bold tracking-tight text-gray-600 pt-5">Potential Future Enhancements:</h4>
-					<ol className="list-disc list-inside pt-5">
-						<li className="text-md leading-8 text-gray-600">
+					<ol className="list-decimal list-inside pt-5">
+						<li className="text-md leading-8 text-gray-600 italic">
+							Add JSON validation for GPT summarization output put to handle malformed JSON responses.
+						</li>
+						<li className="text-md leading-8 text-gray-600 italic">
 							Set a max minute cap on the duration of a YouTube video to save compute resources & API Costs.
 						</li>
-						<li className="text-md leading-8 text-gray-600">
+						<li className="text-md leading-8 text-gray-600 italic">
 							Send server updates at each step of the transcription process to better inform user of summarization progress.
 						</li>
-						<li className="text-md leading-8 text-gray-600">
+						<li className="text-md leading-8 text-gray-600 italic">
 							Add validation check via client side cache to prevent concurrent transcription requests in the event of a browser refresh
 							or second tab.
 						</li>
