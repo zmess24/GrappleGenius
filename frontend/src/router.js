@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, createRoutesFromElements, createBrowserRouter, useLoaderData } from "react-router-dom";
+import { Route, createRoutesFromElements, createBrowserRouter } from "react-router-dom";
 // Page Elements
 import NavLayout from "./layout";
 import Landing from "./routes/Landing";
