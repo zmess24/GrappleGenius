@@ -29,7 +29,7 @@ function About() {
 				key={t.name}
 				className="m-1 inline-flex items-center border py-1.5 pl-3 pr-3 text-sm font-medium text-grey-700 border-grey-600 bg-grey-400"
 			>
-				<img className="h-4 w-4 mr-2" src={t.image} />
+				<img className="h-4 w-4 mr-2" src={t.image} alt={t.name} />
 				<span>{t.name}</span>
 			</Link>
 		);
