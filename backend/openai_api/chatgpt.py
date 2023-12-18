@@ -14,10 +14,10 @@ client = OpenAI(api_key=API_KEY[0])
 # Create Sentiment Analysis Bot
 def analyze_video_title(title):
     # System Description
-    system_description = "You are help sentiment analysis assistant whose sole purpose is to determine if the text I provide has to do with Brazilian Ju-Jitsu. I only want you to give True or False answers with no additional information."
+    system_description = "You are helpful sentiment analysis assistant whose sole purpose is to determine if the provided YouTube video titles are Brazilian Ju-Jitsu, Judo, or Wrestling instructionial videos. I only want you to give 'True' or 'False' answers with no additional information."
     # Generate Response
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="ft:gpt-3.5-turbo-0613:personal:grapple-genius:8WyX4haA",
         messages=[
             {"role": "system", "content": system_description},
             {"role": "user", "content": title}
