@@ -1,9 +1,5 @@
-import whisper
 import pytube as pt
 from . import chatgpt
-
-# Initialize Whisper model size.
-model = whisper.load_model("base")
 
 def download_video(link):
     print(f"-- 1. DOWNLOADING VIDEO: {link.url} --")
@@ -22,8 +18,10 @@ def download_video(link):
 
 def transcribe_video():
     print("-- 5. TRANSCRIBING VIDEO --")
-    result = model.transcribe("audio_english.mp3")
+    # result = model.transcribe("audio_english.mp3")
+    audio_file= open("audio_english.mp3", "rb")
+    result = chatgpt.transcribe_video(audio_file)
     print("-- 6. SUMMARIZING --")
-    summary = chatgpt.summarize_transcript(result["text"])
+    summary = chatgpt.summarize_transcript(result)
     print("-- 7. FINISHED --")
     return summary

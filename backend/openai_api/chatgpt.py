@@ -53,3 +53,11 @@ def summarize_transcript(transcript):
     # Parse out response & return result
     summary = response.choices[0].message.content
     return summary
+
+def transcribe_video(audio_file):
+    transcript = client.audio.transcriptions.create(
+        model="whisper-1", 
+        file=audio_file
+    )
+
+    return transcript.text
