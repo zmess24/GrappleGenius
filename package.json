@@ -4,6 +4,9 @@
 	"description": "Jujitsu Knoweldge Application",
 	"main": "index.js",
 	"scripts": {
+		"heroku:deploy": "git subtree push --prefix backend heroku main",
+		"heroku:kill": "heroku ps:scale web=0 --app jobspyder",
+		"heroku:scale": "heroku ps:scale web=1 --app jobspyder",
 		"serve:dev": "python backend/main.py"
 	},
 	"author": "",
