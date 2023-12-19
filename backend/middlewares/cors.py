@@ -6,6 +6,7 @@ def enable_cors(app):
         "http://localhost",
         "http://localhost:8000",
         "http://localhost:3000",
+        "https://grapplegenius-b0e1e8887b67.herokuapp.com/"
     ]
 
     # 
