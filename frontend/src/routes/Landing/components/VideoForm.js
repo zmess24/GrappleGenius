@@ -54,14 +54,14 @@ function VideoForm() {
 		if (!error) {
 			try {
 				setLoading(true);
+				// let res = await axios.post("http://localhost:8000/api/predict", { url: inputValue });
 				let res = await axios.post("/api/predict", { url: inputValue });
-				// let res = await axios.post("/api/predict", { url: inputValue });
+				// let res = await axios.get("/api/predict");
 				if (res.data.error) {
 					setError({ showError: true, message: res.data.error });
 				} else {
 					valdiateOutput(res.data);
 					await updateContextAndCache(res.data);
-					debugger;
 					navigate(`/summary/${res.data.id}`, { state: { data: res.data } });
 					setInputValue("");
 					setError({ showError: false, message: "" });
