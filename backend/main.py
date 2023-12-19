@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from openai_api import whisper
 from middlewares import cors
+from pydantic import BaseModel
 
 # Initialize FastAPI Instances
 app = FastAPI(title="frontend-app")
@@ -13,6 +14,9 @@ app.mount("/", StaticFiles(directory="public", html=True), name="public")
 
 # Add Middlewares
 cors.enable_cors(app)
+
+class YouTubeLink(BaseModel):
+    url: str
 
 # Define API Routes
 @api_app.post("/predict")
