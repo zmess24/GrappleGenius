@@ -54,8 +54,8 @@ function VideoForm() {
 		if (!error) {
 			try {
 				setLoading(true);
-				let res = await axios.post("http://localhost:8000/api/predict", { url: inputValue });
-				// let res = await axios.get("/api/predict");
+				let res = await axios.post("/api/predict", { url: inputValue });
+				// let res = await axios.post("/api/predict", { url: inputValue });
 				if (res.data.error) {
 					setError({ showError: true, message: res.data.error });
 				} else {
