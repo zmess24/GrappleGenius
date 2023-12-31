@@ -1,9 +1,13 @@
 from fastapi import FastAPI, Response
 from fastapi.staticfiles import StaticFiles
-from openai_api import whisper
+from fastapi.responses import StreamingResponse
 from middlewares import cors
-from pydantic import BaseModel
 import os 
+import asyncio
+import json
+
+
+# Define root path in app directory for static file serving.
 root = os.path.dirname(os.path.abspath(__file__))
 
 # Initialize FastAPI Instances
@@ -31,18 +35,24 @@ async def main():
 
 app.mount("/", StaticFiles(directory="public", html=True), name="public") 
 
-class YouTubeLink(BaseModel):
-    url: str
+async def generator():
+    for i in range(10):
+        res = { "message": i }
+        print(res)
+        yield json.dumps(res)
+        await asyncio.sleep(2)
 
 # Define API Routes
-@api_app.post("/predict")
-async def predict(link: YouTubeLink):
+@api_app.get("/predict")
+async def predict(url: str):
+    print(url)
+    return StreamingResponse(generator(), media_type="application/x-ndjson")
     # Download Video from 'pytube' and analyze title category
-    result = whisper.download_video(link)
-    # If title is related to BJJ, Transcribe video. 
-    if result["sentiment"] == "True":
-        summary = whisper.transcribe_video()
-        return { "title": result["title"], "summary": summary, "id": result["video_id"] }
-    else: 
-        error_message = f"Sorry, {result['title']} doesn't appear to be a BJJ instructional video."
-        return {"error": error_message }
+    # result = whisper.download_video(link)
+    # # If title is related to BJJ, Transcribe video. 
+    # if result["sentiment"] == "True":
+    #     summary = whisper.transcribe_video()
+    #     return { "title": result["title"], "summary": summary, "id": result["video_id"] }
+    # else: 
+    #     error_message = f"Sorry, {result['title']} doesn't appear to be a BJJ instructional video."
+    #     return {"error": error_message }

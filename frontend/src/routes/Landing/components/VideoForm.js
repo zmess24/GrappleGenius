@@ -55,18 +55,63 @@ function VideoForm() {
 			try {
 				setLoading(true);
 				// let res = await axios.post("http://localhost:8000/api/predict", { url: inputValue });
-				let res = await axios.post("/api/predict", { url: inputValue });
-				// let res = await axios.get("/api/predict");
-				if (res.data.error) {
-					setError({ showError: true, message: res.data.error });
-				} else {
-					valdiateOutput(res.data);
-					await updateContextAndCache(res.data);
-					navigate(`/summary/${res.data.id}`, { state: { data: res.data } });
-					setInputValue("");
-					setError({ showError: false, message: "" });
-				}
-				setLoading(false);
+				// let res = await axios.post("/api/predict", { url: inputValue });
+				// const response = await fetch(`http://localhost:8000/api/predict?url=${inputValue}`);
+				fetch(`http://localhost:8000/api/predict?url=${inputValue}`)
+					.then((response) => {
+						// Get the readable stream from the response body
+						const stream = response.body;
+						// Get the reader from the stream
+						const reader = stream.getReader();
+						// Define a function to read each chunk
+						const readChunk = () => {
+							// Read a chunk from the reader
+							reader
+								.read()
+								.then(({ value, done }) => {
+									// Check if the stream is done
+									if (done) {
+										// Log a message
+										console.log("Stream finished");
+										// Return from the function
+										return;
+									}
+									// Convert the chunk value to a string
+									const chunkString = new TextDecoder().decode(value);
+									// Log the chunk string
+									console.log(chunkString);
+									// Read the next chunk
+									readChunk();
+								})
+								.catch((error) => {
+									// Log the error
+									console.error(error);
+								});
+						};
+						// Start reading the first chunk
+						readChunk();
+					})
+					.catch((error) => {
+						// Log the error
+						console.error(error);
+					});
+
+				// axios.get(`http://localhost:8000/api/predict?url=${inputValue}`, { responseType: "stream" }).then((response) => {
+				// 	response.data.on("data", (chunk) => {
+				// 		console.log(chunk);
+				// 	});
+				// });
+				// if (res.data.error) {
+				// 	setError({ showError: true, message: res.data.error });
+				// } else {
+				// 	// console.log(res.data);
+				// 	valdiateOutput(res.data);
+				// 	await updateContextAndCache(res.data);
+				// 	navigate(`/summary/${res.data.id}`, { state: { data: res.data } });
+				// 	setInputValue("");
+				// 	setError({ showError: false, message: "" });
+				// }
+				// setLoading(false);
 			} catch (err) {
 				console.log(err.message);
 			}
