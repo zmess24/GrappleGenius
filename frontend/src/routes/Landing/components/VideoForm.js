@@ -79,11 +79,11 @@ function VideoForm() {
 										setError({ showError: true, message: stream.error });
 										setLoading(false);
 									} else if (stream.status === "Complete") {
-										updateContextAndCache(stream);
-										debugger;
-										navigate(`/summary/${stream.id}`, { state: { data: stream } });
-										setInputValue("");
-										setError({ showError: false, message: "" });
+										updateContextAndCache(stream).then(() => {
+											navigate(`/summary/${stream.id}`, { state: { data: stream } });
+											setInputValue("");
+											setError({ showError: false, message: "" });
+										});
 									} else {
 										setStreamStatus(`${stream.status} video...`);
 										// Read the next chunk
