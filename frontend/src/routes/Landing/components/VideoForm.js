@@ -51,8 +51,8 @@ function VideoForm() {
 			try {
 				setLoading(true);
 				setStreamStatus("Please wait, this may take a few minutes...");
-				// let res = await axios.post("/api/predict", { url: inputValue });
-				fetch(`http://localhost:8000/api/predict?url=${inputValue}`)
+				// fetch(`http://localhost:8000/api/predict?url=${inputValue}`)
+				fetch(`/api/predict?url=${inputValue}`)
 					.then((response) => {
 						// Get the readable stream from the response body
 						const stream = response.body;
