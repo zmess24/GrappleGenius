@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { VideoCameraIcon } from "@heroicons/react/20/solid";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ErrorMessage from "./ErrorMessage";
 import LoadingMessage from "./LoadingMessage";
@@ -11,6 +10,7 @@ function VideoForm() {
 	const navigate = useNavigate();
 	const [inputValue, setInputValue] = useState("");
 	const [loading, setLoading] = useState(false);
+	const [streamStatus, setStreamStatus] = useState("");
 	const [error, setError] = useState({ showError: false, message: "" });
 	const { summaries, setSummaries } = useOutletContext();
 
@@ -35,10 +35,6 @@ function VideoForm() {
 		return false;
 	};
 
-	let valdiateOutput = (data) => {
-		console.log(data);
-	};
-
 	let updateContextAndCache = async (data) => {
 		let timestamp = new Date().getTime();
 		let newSummary = { ...data, timestamp, link: inputValue };
@@ -54,9 +50,8 @@ function VideoForm() {
 		if (!error) {
 			try {
 				setLoading(true);
-				// let res = await axios.post("http://localhost:8000/api/predict", { url: inputValue });
+				setStreamStatus("Please wait, this may take a few minutes...");
 				// let res = await axios.post("/api/predict", { url: inputValue });
-				// const response = await fetch(`http://localhost:8000/api/predict?url=${inputValue}`);
 				fetch(`http://localhost:8000/api/predict?url=${inputValue}`)
 					.then((response) => {
 						// Get the readable stream from the response body
@@ -69,6 +64,9 @@ function VideoForm() {
 							reader
 								.read()
 								.then(({ value, done }) => {
+									// Convert the chunk value to a string
+									let stream = new TextDecoder().decode(value);
+									stream = JSON.parse(stream);
 									// Check if the stream is done
 									if (done) {
 										// Log a message
@@ -76,42 +74,34 @@ function VideoForm() {
 										// Return from the function
 										return;
 									}
-									// Convert the chunk value to a string
-									const chunkString = new TextDecoder().decode(value);
-									// Log the chunk string
-									console.log(chunkString);
-									// Read the next chunk
-									readChunk();
+
+									if (stream.error) {
+										setError({ showError: true, message: stream.error });
+										setLoading(false);
+									} else if (stream.status === "Complete") {
+										updateContextAndCache(stream);
+										debugger;
+										navigate(`/summary/${stream.id}`, { state: { data: stream } });
+										setInputValue("");
+										setError({ showError: false, message: "" });
+									} else {
+										setStreamStatus(`${stream.status} video...`);
+										// Read the next chunk
+										readChunk();
+									}
 								})
-								.catch((error) => {
-									// Log the error
-									console.error(error);
+								.catch(({ message }) => {
+									setError({ showError: true, message });
 								});
 						};
 						// Start reading the first chunk
 						readChunk();
 					})
-					.catch((error) => {
+					.catch(({ message }) => {
 						// Log the error
-						console.error(error);
+						debugger;
+						setError({ showError: true, message });
 					});
-
-				// axios.get(`http://localhost:8000/api/predict?url=${inputValue}`, { responseType: "stream" }).then((response) => {
-				// 	response.data.on("data", (chunk) => {
-				// 		console.log(chunk);
-				// 	});
-				// });
-				// if (res.data.error) {
-				// 	setError({ showError: true, message: res.data.error });
-				// } else {
-				// 	// console.log(res.data);
-				// 	valdiateOutput(res.data);
-				// 	await updateContextAndCache(res.data);
-				// 	navigate(`/summary/${res.data.id}`, { state: { data: res.data } });
-				// 	setInputValue("");
-				// 	setError({ showError: false, message: "" });
-				// }
-				// setLoading(false);
 			} catch (err) {
 				console.log(err.message);
 			}
@@ -151,7 +141,7 @@ function VideoForm() {
 				/>
 			</div>
 			<ErrorMessage show={error.showError} message={error.message} />
-			<LoadingMessage show={loading} />
+			<LoadingMessage show={loading} streamStatus={streamStatus} />
 		</form>
 	);
 }

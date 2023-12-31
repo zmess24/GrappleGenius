@@ -8,7 +8,7 @@ function Summary() {
 	let data = useLoaderData(); // If page is hit directly.
 	const { state } = useLocation(); // If page is hit dynamically.
 	let summary, title, link;
-
+	debugger;
 	try {
 		title = state ? state.data.title : data.title;
 		summary = state ? JSON.parse(state.data.summary) : JSON.parse(data.summary);

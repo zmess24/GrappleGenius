@@ -1,10 +1,12 @@
 from fastapi import FastAPI, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import StreamingResponse
+from openai_api import whisper
 from middlewares import cors
 import os 
 import asyncio
 import json
+
 
 
 # Define root path in app directory for static file serving.
@@ -35,24 +37,23 @@ async def main():
 
 app.mount("/", StaticFiles(directory="public", html=True), name="public") 
 
-async def generator():
-    for i in range(10):
-        res = { "message": i }
-        print(res)
-        yield json.dumps(res)
-        await asyncio.sleep(2)
+def generator(url):
+    # Download Video from 'pytube' and analyze title category
+    yield json.dumps({ "status": "Downloading" })
+    result = whisper.download_video(url)
+    
+    # #If title is related to BJJ, Transcribe video. 
+    if result["sentiment"] == "True":
+        yield json.dumps({ "status": "Transcribing" })
+        transcript = whisper.transcribe_video()
+        yield json.dumps({ "status": "Summarizing" })
+        summary = whisper.summarize_video(transcript)
+        yield json.dumps({ "status": "Complete", "title": result["title"], "summary": summary, "id": result["video_id"] })
+    else: 
+        error_message = f"Sorry, {result['title']} doesn't appear to be a BJJ instructional video."
+        yield json.dumps({"error": error_message })
 
 # Define API Routes
 @api_app.get("/predict")
 async def predict(url: str):
-    print(url)
-    return StreamingResponse(generator(), media_type="application/x-ndjson")
-    # Download Video from 'pytube' and analyze title category
-    # result = whisper.download_video(link)
-    # # If title is related to BJJ, Transcribe video. 
-    # if result["sentiment"] == "True":
-    #     summary = whisper.transcribe_video()
-    #     return { "title": result["title"], "summary": summary, "id": result["video_id"] }
-    # else: 
-    #     error_message = f"Sorry, {result['title']} doesn't appear to be a BJJ instructional video."
-    #     return {"error": error_message }
+    return StreamingResponse(generator(url), media_type="application/json")
