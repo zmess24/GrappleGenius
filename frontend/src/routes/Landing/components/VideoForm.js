@@ -119,6 +119,7 @@ function VideoForm() {
 
 	let normalInput = "text-gray-900 focus:ring-indigo-600 ring-gray-300";
 	let errorInput = "bg-red-50 border-red-500 text-red-900 focus:ring-red-600 ring-red-300 ";
+
 	return (
 		<form onSubmit={handleSubmit}>
 			<div className="relative mt-2 rounded-md shadow-sm">
